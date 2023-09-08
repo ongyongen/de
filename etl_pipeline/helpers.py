@@ -107,3 +107,18 @@ def replace_na_cells(data_frame, replacement_str):
     """
     data_frame = data_frame.fillna(replacement_str)
     return data_frame
+
+def extract_photo_urls(event):
+    """
+    Obtain photo URLs for all photos of each event.
+    If there's multiple photo URLs, they are separated by
+    a comma delimiter
+
+    Input : list
+    Output : string
+    """
+    if 'photos' in event:
+        photo_urls = list(map(lambda photo: photo['photo']['url'], event['photos']))
+        photo_urls_string = ",".join(photo_urls)
+        return photo_urls_string
+    return dataframe.NA_VALUE

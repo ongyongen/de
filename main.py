@@ -42,7 +42,7 @@ if __name__ == '__main__':
     q2_filename = f"sample_output/q2_{curr_time}.csv"
 
     export_dataframe_to_csv(df1, q1_filename)
-    export_dataframe_to_csv(df1, q2_filename)
+    export_dataframe_to_csv(df2, q2_filename)
     print("- The dataframes for Q1 and Q2 are exported to sample_output folder")
 
 
