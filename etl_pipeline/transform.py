@@ -75,17 +75,8 @@ def process_restaurant_events_within_date_range(df1, fixed_start, fixed_end):
                 event_title = event['event'] ['title']
                 start_date = event['event'] ['start_date']
                 end_date = event['event'] ['end_date']
-    
-     
                 # Check that restaurant's events occured in the stated time period
                 # (ie Apr 2019 in this case)
-
-                if restaurant_id == 18751849:
-                    print(event['event'])
-                    print(datetime.strptime(end_date, '%Y-%m-%d'))
-                    print(datetime.strptime(end_date, '%Y-%m-%d') <= datetime.strptime(fixed_end, '%Y-%m-%d'))
-                    print(event['event']['event_id'])
-                    print(len(events))
 
                 if event_occurs_within_dates(
                     datetime.strptime(start_date, '%Y-%m-%d'),
@@ -98,14 +89,14 @@ def process_restaurant_events_within_date_range(df1, fixed_start, fixed_end):
                     # to obtain all event photos' url links.
                     # If the event has more than one photo, the other photo's url links
                     # are concatenated together with a comma separator
-                    # photo_urls_string = extract_photo_urls(event['event'])
+                    photo_urls_string = extract_photo_urls(event['event'])
 
                     # Insert the valid event data (within stated time period)
                     # into the new dataframe for Q2
                     df2.loc[index, dataframe.EVENT_ID] =  event_id
                     df2.loc[index, dataframe.RESTAURANT_ID] = restaurant_id
                     df2.loc[index, dataframe.RESTAURANT_NAME] = restaurant_name
-                    # df2.loc[index, dataframe.PHOTO_URL] = photo_urls_string
+                    df2.loc[index, dataframe.PHOTO_URL] = photo_urls_string
                     df2.loc[index, dataframe.EVENT_TITLE] = event_title
                     df2.loc[index, dataframe.EVENT_START_DATE] = start_date
                     df2.loc[index, dataframe.EVENT_END_DATE] = end_date
